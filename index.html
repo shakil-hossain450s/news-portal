@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" class="bg-[#F6F6F6]">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Portal</title>
+    <!-- font awesome kit -->
+    <script
+      src="https://kit.fontawesome.com/f3d51a81b3.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- daisy ui and tailwind css cdn -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
@@ -20,17 +25,17 @@
     />
 
     <style>
-      .font-work-sans{
+      .font-work-sans {
         font-family: "Work Sans", system-ui;
       }
     </style>
   </head>
-  <body class="font-work-sans container mx-auto">
+  <body class="font-work-sans">
     <!-- header start -->
-    <header class="px-10 lg:px-24">
+    <header class="container mx-auto px-10 lg:px-24">
       <!-- navbar start -->
-      <nav class="my-4">
-        <div class="navbar bg-base-100">
+      <nav class="py-4">
+        <div class="navbar">
           <div class="flex-1">
             <a class="text-lg font-medium">
               <span class="bg-[#5D5FEF] p-2 text-white rounded">News</span>
@@ -39,8 +44,12 @@
           </div>
           <div class="flex-none gap-2">
             <ul class="flex gap-4 mr-4 font-medium text-lg">
-              <li class="text-[#A3A3A3] hover:text-[#5D5FEF] hover:underline"><a href="">News</a></li>
-              <li class="text-[#A3A3A3] hover:text-[#5D5FEF] hover:underline"><a href="">Blog</a></li>
+              <li class="text-[#A3A3A3] hover:text-[#5D5FEF] hover:underline">
+                <a href="">News</a>
+              </li>
+              <li class="text-[#A3A3A3] hover:text-[#5D5FEF] hover:underline">
+                <a href="">Blog</a>
+              </li>
             </ul>
             <div class="dropdown dropdown-end">
               <div
@@ -73,10 +82,104 @@
         </div>
       </nav>
       <!-- navbar end -->
+      <div class="divider"></div>
+      <!-- categories section end -->
     </header>
     <!-- header end -->
     <!-- main start -->
-    <main></main>
+    <main class="container mx-auto px-10 lg:px-24 mb-24">
+      <!-- categories section start -->
+      <section>
+        <div class="bg-gray-200 min-h-16 rounded mb-4"></div>
+
+        <div class="bg-white p-4 rounded">
+          <p>4 items found for category Entertainments</p>
+        </div>
+      </section>
+      <section class="my-10">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-6">
+            <p class="text-lg font-medium">Sort By View:</p>
+            <select class="p-2">
+              <option disabled selected>Default</option>
+              <option>Han Solo</option>
+              <option>Greedo</option>
+            </select>
+          </div>
+          <div>
+            <button
+              class="btn bg-[#5D5FEF] hover:bg-[#5D5FEF] px-6 text-white mr-4"
+            >
+              Today's Pick
+            </button>
+            <button
+              class="btn border border-[#5D5FEF] hover:text-white hover:bg-[#5D5FEF] px-6 text-[#5D5FEF]"
+            >
+              Trending
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- news card container -->
+      <section>
+        <div>
+          <div
+            class="card card-side flex-col lg:flex-row bg-base-100 shadow-xl p-5"
+          >
+            <figure class="rounded-xl w-full lg:w-3/12">
+              <img
+                class=""
+                src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                alt="Movie"
+              />
+            </figure>
+            <div class="card-body w-full lg:w-8/12">
+              <h2 class="card-title">
+                The best fashion influencers to follow for sartorial inspiration
+              </h2>
+              <p>
+                From our favourite UK influencers to the best missives from
+                Milan and the coolest New Yorkers, read on some of the best
+                fashion blogs out there, and for even more inspiration, do head
+                to our separate black fashion influencer round-up.
+
+                <br />
+                <br />
+                Fancy some shopping deals? Check out these amazing sales: Zara
+                Black Friday, ASOS Black Friday, Missoma Black Friday and Gucci
+                Black Friday...
+              </p>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-2.5">
+                  <img src="./assets/Avatar.png" class="rounded-full" alt="" />
+                  <div class="-space-y-1">
+                    <h4 class="font-medium">Jane Copper</h4>
+                    <p class="text-[#718797]">Jan 10, 2022</p>
+                  </div>
+                </div>
+                <div class="flex gap-1 items-center">
+                  <img src="./assets/carbon_view.png" alt="" />
+                  <p>1.5M</p>
+                </div>
+                <div>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div>
+                  <button class="text-lg text-[#5D5FEF]" href="">
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <!-- main end -->
     <!-- footer start -->
     <footer></footer>
