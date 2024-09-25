@@ -102,7 +102,7 @@
         <div class="bg-white p-4 rounded">
           <p>
             <span id="news-count" class="font-medium"></span> items found for
-            category <span id="category-name"></span>
+            category <span id="category-name" class="font-medium"></span>
           </p>
         </div>
       </section>
@@ -133,6 +133,10 @@
 
       <!-- news card container -->
       <section>
+        <!-- loading spinner -->
+        <div id="loading-spinner" class="my-20 flex justify-center items-center hidden">
+          <span class="loading loading-bars loading-lg"></span>
+        </div>
         <!-- news container -->
         <div id="news-container">
           <!-- card news -->

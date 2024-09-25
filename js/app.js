@@ -1,44 +1,44 @@
 const loadCategories = async () => {
-    const res = await fetch("https://openapi.programming-hero.com/api/news/categories");
-    const data = await res.json();
-    const categories = data.data.news_category;
-    displayCategories(categories);
+  const res = await fetch("https://openapi.programming-hero.com/api/news/categories");
+  const data = await res.json();
+  const categories = data.data.news_category;
+  displayCategories(categories);
 }
 
 const displayCategories = categories => {
-    const categoriesContainer = document.querySelector("#categories-container");
-    categories.forEach(category => {
-        const { category_id, category_name } = category;
-        const categoryButton = document.createElement("button");
-        categoryButton.innerHTML = `
+  const categoriesContainer = document.querySelector("#categories-container");
+  categories.forEach(category => {
+    const { category_id, category_name } = category;
+    const categoryButton = document.createElement("button");
+    categoryButton.innerHTML = `
             <button onclick="loadNews('${category_id}', '${category_name}')" class="hover:text-[#5D5FEF]">${category_name}</button>
         `;
-        categoriesContainer.appendChild(categoryButton);
-    });
+    categoriesContainer.appendChild(categoryButton);
+  });
 }
 
 const loadNews = async (category_id = "01", category_name = "Breaking News") => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
-    const data = await res.json();
-    const allNews = data.data;
-    displayNews(allNews, category_name);
+  loadingSpinner(true);
+  const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
+  const data = await res.json();
+  const allNews = data.data;
+  displayNews(allNews, category_name);
+  loadingSpinner(false);
 }
 
 const displayNews = (allNews, category_name) => {
-    const totalNewsFound = document.querySelector("#news-count");
-    totalNewsFound.innerText = allNews.length;
+  document.querySelector("#news-count").innerText = allNews.length;
+  document.querySelector("#category-name").innerText = category_name;
 
-    document.querySelector("#category-name").innerText = category_name;
+  const newsContainer = document.querySelector("#news-container");
+  newsContainer.textContent = "";
 
-    const newsContainer = document.querySelector("#news-container");
-    newsContainer.textContent ="";
+  allNews.forEach(news => {
+    const { image_url, details, title, total_view, rating: { number, badge }, author: { name, published_date, img } } = news;
 
-    allNews.forEach(news => {
-        const { image_url, details, title, total_view, rating: { number, badge }, author: { name, published_date, img } } = news;
-
-        const newsCard = document.createElement("div");
-        newsCard.classList = `card card-side flex-col lg:flex-row bg-base-100 shadow-xl p-5 mb-10 relative`;
-        newsCard.innerHTML = `
+    const newsCard = document.createElement("div");
+    newsCard.classList = `card card-side flex-col lg:flex-row bg-base-100 shadow-xl p-5 mb-10 relative`;
+    newsCard.innerHTML = `
         <figure style="align-items: stretch" class="rounded-xl w-full lg:w-3/12 ">
               <img
                 src="${image_url}"
@@ -81,8 +81,18 @@ const displayNews = (allNews, category_name) => {
               </div>
             </div>
         `;
-        newsContainer.appendChild(newsCard);
-    })
+    newsContainer.appendChild(newsCard);
+  });
+  
+}
+
+const loadingSpinner = isLoading => {
+  const loader = document.querySelector("#loading-spinner");
+  if(isLoading){
+    loader.classList.remove("hidden");
+  } else{
+    loader.classList.add("hidden");
+  }
 }
 
 loadNews();
