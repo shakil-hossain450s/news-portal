@@ -8,31 +8,33 @@ const loadCategories = async () => {
 const displayCategories = categories => {
     const categoriesContainer = document.querySelector("#categories-container");
     categories.forEach(category => {
-        const { category_name } = category;
+        const { category_id, category_name } = category;
         const categoryButton = document.createElement("button");
         categoryButton.innerHTML = `
-            <button class="hover:text-[#5D5FEF]">${category_name}</button>
+            <button onclick="loadNews('${category_id}', '${category_name}')" class="hover:text-[#5D5FEF]">${category_name}</button>
         `;
         categoriesContainer.appendChild(categoryButton);
     });
 }
 
-const loadNews = async () => {
-    const res = await fetch("https://openapi.programming-hero.com/api/news/category/01");
+const loadNews = async (category_id = "01", category_name = "Breaking News") => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
     const data = await res.json();
     const allNews = data.data;
-    displayNews(allNews);
+    displayNews(allNews, category_name);
 }
 
-const displayNews = allNews => {
-
+const displayNews = (allNews, category_name) => {
     const totalNewsFound = document.querySelector("#news-count");
     totalNewsFound.innerText = allNews.length;
 
+    document.querySelector("#category-name").innerText = category_name;
+
     const newsContainer = document.querySelector("#news-container");
+    newsContainer.textContent ="";
+
     allNews.forEach(news => {
-        console.log(news);
-        const { image_url, details, title, total_view, rating: {number, badge }, author: { name, published_date, img } } = news;
+        const { image_url, details, title, total_view, rating: { number, badge }, author: { name, published_date, img } } = news;
 
         const newsCard = document.createElement("div");
         newsCard.classList = `card card-side flex-col lg:flex-row bg-base-100 shadow-xl p-5 mb-10 relative`;
@@ -51,7 +53,7 @@ const displayNews = allNews => {
                 </p> 
               </div>
               <h2 class="card-title text-2xl mb-3">${title}</h2>
-              <p>${details}</p>
+              <p>${details.length > 300 ? details.slice(0, 300) + "..." : details}</p>
               <div class="flex justify-between items-center mt-4">
                 <div class="flex items-center gap-2.5">
                   <img src="${img}" class="h-10 w-10 rounded-full" alt="" />
