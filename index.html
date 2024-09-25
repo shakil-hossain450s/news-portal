@@ -1,18 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Portal</title>
     <!-- daisy ui and tailwind css cdn -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- work sans google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .font-work-sans{
+        font-family: "Work Sans", system-ui;
+      }
+    </style>
   </head>
-  <body class="container mx-auto">
+  <body class="font-work-sans container mx-auto">
     <!-- header start -->
     <header class="px-10 lg:px-24">
       <!-- navbar start -->
-       <nav></nav>
+      <nav class="my-4">
+        <div class="navbar bg-base-100">
+          <div class="flex-1">
+            <a class="text-lg font-medium">
+              <span class="bg-[#5D5FEF] p-2 text-white rounded">News</span>
+              Portal
+            </a>
+          </div>
+          <div class="flex-none gap-2">
+            <ul class="flex gap-4 mr-4 font-medium text-lg">
+              <li class="text-[#A3A3A3] hover:text-[#5D5FEF] hover:underline"><a href="">News</a></li>
+              <li class="text-[#A3A3A3] hover:text-[#5D5FEF] hover:underline"><a href="">Blog</a></li>
+            </ul>
+            <div class="dropdown dropdown-end">
+              <div
+                tabindex="0"
+                role="button"
+                class="btn btn-ghost btn-circle avatar"
+              >
+                <div class="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="./assets/Avatar.png"
+                  />
+                </div>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a class="justify-between">
+                    Profile
+                    <span class="badge">New</span>
+                  </a>
+                </li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
       <!-- navbar end -->
     </header>
     <!-- header end -->
@@ -22,5 +81,8 @@
     <!-- footer start -->
     <footer></footer>
     <!-- footer end -->
+
+    <!-- scripts -->
+    <script src="./js/app.js"></script>
   </body>
 </html>
